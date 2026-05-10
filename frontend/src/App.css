@@ -1,5 +1,7 @@
+/* ── Design tokens ─────────────────────────────────────────────────────── */
 :root {
   --bg: #f7f3ea;
+  --surface: #ffffff;
   --ink: #1a1816;
   --ink-muted: #5e5852;
   --accent: #115362;
@@ -7,81 +9,159 @@
   --rule: #e3ddd0;
   --ok: #2f7d56;
   --err: #b4524c;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, sans-serif;
+  --radius: 10px;
+  --nav-height: 56px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif;
 }
+
+/* ── Reset ─────────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
-  margin: 0;
   background: var(--bg);
   color: var(--ink);
-  min-height: 100vh;
+  min-height: 100dvh;
 }
 
-.shell {
-  max-width: 720px;
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+input {
+  font-family: inherit;
+}
+
+/* ── App shell ─────────────────────────────────────────────────────────── */
+.app {
+  max-width: 480px;
   margin: 0 auto;
-  padding: 72px 28px 96px;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
 }
 
-.kicker {
-  text-transform: uppercase;
-  letter-spacing: 0.18em;
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--accent);
-  margin: 0 0 12px;
+.app-main {
+  flex: 1;
+  padding: 28px 20px calc(var(--nav-height) + 20px);
 }
 
-h1 {
-  font-size: 40px;
-  line-height: 1.1;
-  margin: 0 0 14px;
-  letter-spacing: -0.02em;
-  font-family: "Fraunces", Georgia, serif;
-  font-weight: 500;
+/* ── Bottom nav ────────────────────────────────────────────────────────── */
+.nav {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 480px;
+  height: var(--nav-height);
+  background: var(--surface);
+  border-top: 1px solid var(--rule);
+  display: flex;
+  z-index: 100;
 }
 
-h2 {
-  font-family: "Fraunces", Georgia, serif;
-  font-weight: 500;
-  font-size: 20px;
-  margin: 0 0 10px;
-  letter-spacing: -0.01em;
-}
-
-.pitch {
-  font-size: 18px;
+.nav-item {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: var(--ink-muted);
-  margin: 0 0 40px;
-  line-height: 1.55;
+  text-decoration: none;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  transition: color 0.15s;
 }
 
-section {
-  margin-top: 32px;
-  padding: 24px 26px;
-  background: #fff;
-  border: 1px solid var(--rule);
-  border-radius: 14px;
-}
-
-.ok {
-  color: var(--ok);
-  font-weight: 600;
-  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-  margin: 0;
-}
-
-.err {
-  color: var(--err);
-  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-  margin: 0;
-}
-
-code {
-  background: var(--accent-soft);
+.nav-item.active {
   color: var(--accent);
-  padding: 0.06em 0.4em;
-  border-radius: 4px;
-  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-  font-size: 0.92em;
+  font-weight: 700;
+}
+
+/* ── Shared loading / error ────────────────────────────────────────────── */
+.screen-loading {
+  padding: 48px 0;
+  text-align: center;
+  color: var(--ink-muted);
+  font-size: 0.9rem;
+}
+
+.screen-error {
+  padding: 32px 0;
+  text-align: center;
+}
+
+.screen-error p {
+  color: var(--err);
+  margin-bottom: 12px;
+  font-size: 0.9rem;
+}
+
+.screen-error button,
+.btn {
+  padding: 8px 20px;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius);
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+
+.screen-error button:hover,
+.btn:hover {
+  opacity: 0.85;
+}
+
+.btn-ghost {
+  background: none;
+  color: var(--ink-muted);
+  border: 1px solid var(--rule);
+  padding: 8px 16px;
+  border-radius: var(--radius);
+  font-size: 0.875rem;
+  cursor: pointer;
+}
+
+.btn-ghost:hover {
+  background: var(--rule);
+}
+
+.btn-danger {
+  background: none;
+  color: var(--err);
+  border: 1px solid currentColor;
+  padding: 5px 12px;
+  border-radius: var(--radius);
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.btn-danger:hover {
+  background: #fef2f2;
+}
+
+/* ── Section heading ───────────────────────────────────────────────────── */
+.section-heading {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  margin-bottom: 10px;
+  margin-top: 28px;
+}
+
+.section-heading:first-child {
+  margin-top: 0;
+}
+
+/* ── Inline action error ───────────────────────────────────────────────── */
+.action-error {
+  color: var(--err);
+  font-size: 0.82rem;
+  margin-bottom: 12px;
 }

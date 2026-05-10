@@ -16,3 +16,4 @@ backend/app.db
 .DS_Store
 .vscode/
 .idea/
+.claude/

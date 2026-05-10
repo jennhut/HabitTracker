@@ -1,0 +1,72 @@
+.dashboard-screen {
+  padding-top: 8px;
+}
+
+.dashboard-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 24px;
+}
+
+/* ── Stat grid ─────────────────────────────────────────────────────────── */
+.stat-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.stat-card {
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  padding: 20px 18px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.stat-card--wide {
+  grid-column: span 2;
+}
+
+.stat-value {
+  font-size: 2.6rem;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--accent);
+  letter-spacing: -0.03em;
+}
+
+.stat-denom {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--ink-muted);
+}
+
+.stat-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin-top: 6px;
+}
+
+.stat-unit {
+  font-size: 0.75rem;
+  color: var(--ink-muted);
+}
+
+/* ── Progress bar ──────────────────────────────────────────────────────── */
+.progress-track {
+  margin-top: 10px;
+  height: 6px;
+  background: var(--rule);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: var(--accent);
+  border-radius: 3px;
+  transition: width 0.4s ease;
+}

@@ -1,0 +1,131 @@
+.settings-screen {
+  padding-top: 8px;
+}
+
+.settings-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 24px;
+}
+
+.settings-empty {
+  color: var(--ink-muted);
+  font-size: 0.88rem;
+  padding: 12px 0;
+}
+
+/* ── Habit list ────────────────────────────────────────────────────────── */
+.habit-list-section {
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+
+.habit-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--rule);
+}
+
+.habit-row:last-child {
+  border-bottom: none;
+}
+
+.habit-row--archived {
+  opacity: 0.55;
+}
+
+.habit-row--editing {
+  flex-wrap: wrap;
+  gap: 8px;
+  background: var(--accent-soft);
+}
+
+.habit-row__name {
+  flex: 1;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+/* ── Colour swatch ─────────────────────────────────────────────────────── */
+.colour-swatch {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  flex-shrink: 0;
+  border: 1px solid rgba(0,0,0,0.08);
+}
+
+/* ── Colour picker input ───────────────────────────────────────────────── */
+.colour-picker {
+  width: 36px;
+  height: 36px;
+  padding: 2px;
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  background: var(--surface);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+/* ── Row actions ───────────────────────────────────────────────────────── */
+.row-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.icon-btn {
+  background: none;
+  border: none;
+  font-size: 1rem;
+  padding: 4px 6px;
+  border-radius: 6px;
+  color: var(--ink-muted);
+  cursor: pointer;
+  transition: background 0.12s;
+}
+
+.icon-btn:hover {
+  background: var(--rule);
+  color: var(--ink);
+}
+
+/* ── Name input (edit mode + add form) ─────────────────────────────────── */
+.habit-name-input {
+  flex: 1;
+  min-width: 0;
+  padding: 8px 10px;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  font-size: 0.9rem;
+  background: var(--surface);
+  outline: none;
+}
+
+.habit-name-input:focus {
+  border-color: var(--accent);
+}
+
+/* ── Add form ──────────────────────────────────────────────────────────── */
+.add-form {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  padding: 10px 12px;
+  margin-bottom: 4px;
+}
+
+.add-form .btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}

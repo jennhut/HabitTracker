@@ -1,16 +1,12 @@
-"""FastAPI entrypoint for the Habit Tracker assignment.
-
-This is a skeleton. As you work through the workflow phases, you will add
-schema, endpoints, and Pydantic models under this package. The only thing
-that ships with the template is a health endpoint and automatic application
-of schema.sql on startup when the database file does not exist.
-"""
+"""FastAPI entrypoint for the Habit Tracker."""
 from __future__ import annotations
 
 import sqlite3
 from pathlib import Path
 
 from fastapi import FastAPI
+
+from app.routers import checkins, dashboard, export, habits
 
 BACKEND_DIR = Path(__file__).resolve().parent.parent
 DB_PATH = BACKEND_DIR / "app.db"
@@ -38,7 +34,11 @@ def _init_db_if_missing() -> None:
 
 app = FastAPI(
     title="Habit Tracker",
-    description="Capability Engineer starter assignment 06 of 10.",
+    description=(
+        "REST API for the Habit Tracker app. "
+        "Track workout consistency across Upper Body, Lower Body, Cardio, and any "
+        "custom habits you define. All routes are prefixed with `/api`."
+    ),
     version="0.1.0",
 )
 
@@ -50,5 +50,11 @@ def on_startup() -> None:
 
 @app.get("/api/health", summary="Health check", tags=["health"])
 def health() -> dict[str, str]:
-    """Return OK if the backend is up. Used by tests and smoke checks."""
+    """Return `{"status": "ok"}` if the backend is running."""
     return {"status": "ok"}
+
+
+app.include_router(habits.router)
+app.include_router(checkins.router)
+app.include_router(dashboard.router)
+app.include_router(export.router)

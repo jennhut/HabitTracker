@@ -1,0 +1,143 @@
+.checkin-screen {
+  padding-top: 8px;
+}
+
+/* ── Header row (date heading + picker) ────────────────────────────────── */
+.checkin-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.checkin-date {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.2;
+  margin: 0;
+}
+
+/* ── Date text field + inline error ────────────────────────────────────── */
+.date-field {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+}
+
+.date-text-input {
+  width: 102px;
+  padding: 6px 8px;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--ink);
+  font-size: 0.82rem;
+  font-family: ui-monospace, 'Cascadia Code', monospace;
+  outline: none;
+}
+
+.date-text-input:focus {
+  border-color: var(--accent);
+}
+
+.date-text-input--error {
+  border-color: var(--err);
+}
+
+.date-error {
+  margin: 0;
+  font-size: 0.75rem;
+  color: var(--err);
+  text-align: right;
+}
+
+.checkin-empty {
+  color: var(--ink-muted);
+  font-size: 0.9rem;
+}
+
+.checkin-empty a {
+  color: var(--accent);
+}
+
+.habit-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.habit-item {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* ── Habit button ──────────────────────────────────────────────────────── */
+.habit-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 14px 18px;
+  border: 2px solid var(--habit-colour, var(--accent));
+  border-radius: var(--radius);
+  background: transparent;
+  color: var(--ink);
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: left;
+  transition: background 0.15s, color 0.15s;
+}
+
+.habit-btn:hover {
+  background: color-mix(in srgb, var(--habit-colour, var(--accent)) 10%, transparent);
+}
+
+.habit-btn--logged {
+  background: var(--habit-colour, var(--accent));
+  color: #fff;
+  border-color: var(--habit-colour, var(--accent));
+}
+
+.habit-btn--logged:hover {
+  opacity: 0.85;
+}
+
+.habit-btn--pending {
+  background: color-mix(in srgb, var(--habit-colour, var(--accent)) 15%, transparent);
+}
+
+.habit-btn__check {
+  font-size: 1.1rem;
+}
+
+/* ── Note field ────────────────────────────────────────────────────────── */
+.note-field {
+  display: flex;
+  gap: 8px;
+  padding: 0 2px;
+  animation: slide-down 0.15s ease;
+}
+
+@keyframes slide-down {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.note-input {
+  flex: 1;
+  padding: 9px 12px;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  background: var(--surface);
+  font-size: 0.9rem;
+  outline: none;
+}
+
+.note-input:focus {
+  border-color: var(--accent);
+}
